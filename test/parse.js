@@ -53,7 +53,14 @@ function parseEvent($, event, date = "unspecified") {
         if (n == 1) eventText.time = data;
         if (n == 2) eventText.who = data;
     });
-    return [ eventText ];
+    var parse = [ eventText ];
+    if (eventText.time.indexOf('&') > -1) {
+        var times = eventText.time.split('&');
+        eventText.time = times[0];
+        parse.push({...eventText, time: times[1]});
+        // ToDo: Handle more than one ampersand
+    }
+    return parse;
 }
 
 main();
