@@ -6,9 +6,9 @@ function parseHtml(html) {
     const $ = cheerio.load(html);
 
     var days = $('.day-list');
-    console.log("Days Found:", days.toArray().length);
+    console.error("Days Found:", days.toArray().length);
     // Just grab a few days
-    days = days.slice(0, 1);
+    days = days.slice(0, 7);
     var parse = [];
     days.each(function(n, day) {
         parse = parse.concat(parseDay($, day));
@@ -19,9 +19,9 @@ function parseHtml(html) {
 function parseDay($, day) {
     var title = $('.title1', day)[0];
     var date = title.firstChild.data.trim();
-    //console.log(date);
+    //console.error(date);
     var events = $('.day-event', day);
-    console.log("Events found:", events.toArray().length);
+    console.error("Events found:", events.toArray().length);
     var parse = [];
     events.each(function(n, event) {
         parse = parse.concat(parseEvent($, event, date));
@@ -31,7 +31,7 @@ function parseDay($, day) {
 
 function parseEvent($, event, date = "unspecified") {
     var texts = $('div.text2', event);
-    console.log("Texts found:", texts.toArray().length);
+    console.error("Texts found:", texts.toArray().length);
     var eventText = {
         who: "Unknown",
         where: "Unknown",
@@ -40,7 +40,7 @@ function parseEvent($, event, date = "unspecified") {
     };
     texts.each(function(n, text) {
         var data = text.firstChild.data;
-        //console.log("Text:", data);
+        //console.error("Text:", data);
         if (n == 0) eventText.where = data;
         if (n == 1) eventText.time = data;
         if (n == 2) eventText.who = data;
