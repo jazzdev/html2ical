@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/parse.js"
+    "test": "node test/parse.js",
+    "deploy" : "make -f deploy/Makefile"
   },
   "keywords": [],
   "author": "",
