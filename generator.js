@@ -60,6 +60,9 @@ function mkStartTime(event, tz) {
     ].join("");
     var date = Date.parse(dateString);
     if (!date) {
+        if (date.getHours() < 2) {
+            date.setDate(date.getDate() + 1);
+        }
         console.error("dateString", dateString);
         console.error("date", date);
         return dateString;
