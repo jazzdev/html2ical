@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test/parse.js",
-    "deploy" : "make -f deploy/Makefile"
+    "deploy": "make -f deploy/Makefile"
   },
   "keywords": [],
   "author": "",

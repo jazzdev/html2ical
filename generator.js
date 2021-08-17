@@ -35,7 +35,7 @@ function generateCal(parsedEvents, domain = "example.com", tz = "PST") {
 
 function mkID(date, count, domain) {
     return [
-        date.replaceAll(' ',''),
+        date.replace(' ',''),
         '.E',
         count,
         '@',
