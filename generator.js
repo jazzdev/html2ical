@@ -44,7 +44,7 @@ function mkID(date, count, domain) {
 }
 
 function mkISO8601Time(date) {
-    return date.toISOString().slice(0,19).replace(/[-:]/g, "") + 'Z';
+    return date.toISOString().slice(0,19).replace(/[-: ]/g, "") + 'Z';
 }
 
 function mkStartTime(event, tz) {
@@ -60,14 +60,16 @@ function mkStartTime(event, tz) {
     ].join("");
     var date = Date.parse(dateString);
     if (!date) {
-        if (date.getHours() < 2) {
-            date.setDate(date.getDate() + 1);
-        }
         console.error("dateString", dateString);
         console.error("date", date);
         return dateString;
     }
-    return mkISO8601Time(new Date(date));
+    date = new Date(date);
+    if (date.getHours() == 21) {
+        console.error("Adjusting midnight");
+        date.setDate(date.getDate() + 1);
+    }
+    return mkISO8601Time(date);
 }
 
 exports.generateCal = generateCal;

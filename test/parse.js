@@ -6,7 +6,7 @@ function main() {
 
     console.error("Reading test file:", testFile);
     var html = fs.readFileSync(testFile, 'utf8');
-    var parse = parser.parseHtml(html);
+    var parse = parser.parseHtml(html, 7);
     console.error("Parse:", parse);
 }
 

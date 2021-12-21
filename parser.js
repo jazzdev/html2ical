@@ -2,13 +2,13 @@
 
 const cheerio = require('cheerio');
 
-function parseHtml(html) {
+function parseHtml(html, numDaysToParse = 7) {
     const $ = cheerio.load(html);
 
     var days = $('.day-list');
     console.error("Days Found:", days.toArray().length);
     // Just grab a few days
-    days = days.slice(0, 7);
+    days = days.slice(0, numDaysToParse);
     var parse = [];
     days.each(function(n, day) {
         parse = parse.concat(parseDay($, day));
