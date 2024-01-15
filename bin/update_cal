@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/dev/html2ical
+make -f deploy/Makefile > update_cal.log 2>&1
