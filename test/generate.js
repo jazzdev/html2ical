@@ -3,7 +3,7 @@ const parser = require('../parser');
 const generator = require('../generator');
 
 function main() {
-    const testFile = 'test/data/smalls.cal.html';
+    const testFile = 'data/smalls.cal.html';
 
     console.error("Reading test file:", testFile);
     var html = fs.readFileSync(testFile, 'utf8');
